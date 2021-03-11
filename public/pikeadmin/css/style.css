@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,300");
+
+
+
+.custom-modal .modal-header {    
+    padding: 10px !important;
+    border-radius: 0;
+    background-color: #808000;
+    color: #fff;
+    font-size:0pt; 
+}
+
+.custom-modal .modal-header-delete {    
+    padding: 10px !important;
+    border-radius: 0;
+    background-color: #d33724;
+    color: #fff;
+    font-size:0pt; 
+}
+
+.custom-modal .modal-content {    
+    background-color: #f7f7f7;
+}
+
+.custom-modal .modal-footer {    
+    padding: 10px !important;
+    border-radius: 0;
+    background-color: #f3f3f3;
+}
+
+.custom-modal .close {
+    color: #fff;
+    text-shadow: 0;
+}
