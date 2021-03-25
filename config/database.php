@@ -45,7 +45,7 @@ return [
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'drjuridico'),
             'username' => env('DB_USERNAME', 'drjuridico'),
-            'password' => env('DB_PASSWORD', '@Ricardo2723'),
+            'password' => env('DB_PASSWORD', 'R!c@rd02723'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
