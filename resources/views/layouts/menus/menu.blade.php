@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link bg-white">
                         <i class="nav-icon fa fa-book-reader"></i>
                         <p>
                             Documentos
