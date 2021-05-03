@@ -225,6 +225,8 @@ class PessoaUpdateRequest extends FormRequest
         $posto = Posto::find($dados['posto_id']);
         $dados['nome_guerra'] = $posto->name_abreviado . ' ' .$dados['nome_guerra'];
         */
+
+
         return $dados;
     }
 }

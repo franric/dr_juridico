@@ -260,7 +260,7 @@
         </div>
 </section>
 
-<div class="modal fade" data-backdrop="static" id="modal-default">
+<div class="modal fade"  id="modal-default">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">

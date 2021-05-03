@@ -43,8 +43,9 @@ class ContasRecebersController extends Controller
 
             foreach ($contas->ContasReceber->where('statusRecebimento', 0) as $cont) {
                 $contas['valorPago'] += $cont->valorRecebido;
-                if ($cont->numeroParcela > 0)
-                    $contParcelas = $contParcelas + 1;
+
+                //if ($cont->numeroParcela > 0)
+                    //$contParcelas = $contParcelas + 1;
             }
 
             if ($contas->numParcelaContrato == $contParcelas) {
@@ -61,13 +62,37 @@ class ContasRecebersController extends Controller
         return view('admin.contas_receber.index', compact('contasReceber'));
     }
 
+    public function contasRecebidas()
+    {
+        $contParcelas = 0;
+        $contasRecebidas = $this->contratoRepository->all()->where('statusContrato', 0);
+
+        foreach ($contasRecebidas as $contas)
+        {
+            foreach ($contas->ContasReceber->where('statusRecebimento', 1) as $cont){
+                $contas['valorReceber'] + $cont->valorParcela - $cont->valorRecebido;
+            }
+
+            foreach ($contas->ContasReceber->where('statusRecebimento', 0) as $cont){
+                $contas['valorPago'] += $cont->valorRecebido;
+                if ($cont->numeroParcela > 0)
+                    $contParcelas = $contParcelas + 1;
+            }
+
+
+
+            $contParcelas = 0;
+        }
+
+        return view('admin.contas_recebidas.index', compact('contasRecebidas'));
+    }
     public function contasReceberContrato($id, $dataVencimentoEntrada)
     {
         try {
 
             $contrato = $this->contratoRepository->find($id);
 
-            if ($contrato->valorEntradaContrato > 0) {
+            if ($contrato->valorEntradaContrato > 0 && $contrato->numParcelaContrato == 0) {
 
                 $contasReceberEntrada = [
                     'contrato_id'       => $contrato->id,
@@ -80,7 +105,7 @@ class ContasRecebersController extends Controller
                 $this->repository->create($contasReceberEntrada);
             }
 
-            if ($contrato->numParcelaContrato > 0) {
+            if($contrato->numParcelaContrato > 0) {
 
                 $valorParcela = ($contrato->valorContrato - $contrato->valorEntradaContrato) / $contrato->numParcelaContrato;
 
@@ -104,16 +129,6 @@ class ContasRecebersController extends Controller
 
                     $contasReceber = $this->repository->create($contasReceber);
                 }
-            } else {
-                $contasReceber = [
-                    'contrato_id'       => $contrato->id,
-                    'valorParcela'      => $contrato->valorContrato,
-                    'dataVencimento'    => $contrato->dataVencContrato,
-                    'numeroParcela'     => 0,
-                    'statusRecebimento' => 0
-                ];
-
-                $contasReceber = $this->repository->create($contasReceber);
             }
 
             session()->flash('success', [

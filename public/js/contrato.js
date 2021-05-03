@@ -15,6 +15,7 @@
     function PreloadingStop(){
         stopAnimation();
         $('#modal-default').modal('hide');
+
     };
 
     function validacaoForm() {
@@ -180,6 +181,9 @@
                             gerarContasReceber(data);
 
                         }else{
+                            console.log("error1");
+                            console.log(data['messages']);
+                            console.log(data);
                             toastr.error(data['messages']);
                             PreloadingStop();
                             document.getElementById("btnSalvarr").disabled = false;
@@ -188,6 +192,11 @@
                     error: function(data) {
 
                         PreloadingStop();
+
+                        document.getElementById("btnSalvarr").disabled = false;
+
+                        console.log("teste");
+                        console.log(data);
 
                         if(data.responseJSON.errors.objetoContrato)
                         toastr.error(data.responseJSON.errors.objetoContrato[0]);
@@ -213,7 +222,7 @@
                         if(data.responseJSON.errors.dataVencEntrada)
                             toastr.error(data.responseJSON.errors.dataVencEntrada[0]);
 
-                        document.getElementById("btnSalvarr").disabled = false;
+
                     }
             });
         }

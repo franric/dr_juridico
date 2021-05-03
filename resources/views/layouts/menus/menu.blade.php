@@ -98,7 +98,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link bg-white">
+                    <a href="{{ route('contasRecebidas.index') }}" class="nav-link bg-white">
                         <i class="fa fa-save nav-icon"></i>
                         <p>Contas Recebidas</p>
                     </a>
