@@ -12,6 +12,8 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
+
+            <a href="{{ route('contasReceber.index') }}" class="btn btn-primary">Voltar</a>
             <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item active">Starter Page</li> -->
           </ol>
