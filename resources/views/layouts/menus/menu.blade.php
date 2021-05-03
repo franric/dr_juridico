@@ -11,7 +11,7 @@
             </a>
         </li>
         <li class="nav-item has-treeview menu">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link bg-info">
                 <i class="nav-icon fa fa-user-circle"></i>
                 <p>
                     Clientes
@@ -20,31 +20,40 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('pessoa.index') }}" class="nav-link active">
+                    <a href="{{ route('pessoa.index') }}" class="nav-link bg-white">
                         <i class="fa fa-save nav-icon"></i>
                         <p>Cadastrar</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('historico.index') }}" class="nav-link">
+                    <a href="{{ route('historico.index') }}" class="nav-link bg-white">
                         <i class="fa fa-pen-alt"></i>
                         <p>Relato dos Fatos</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('procuracao.index') }}" class="nav-link bg-white">
+                        <i class="nav-icon fa fa-file"></i>
+                        <p>
+                            Procuração
+                            <!-- <span class="right badge badge-danger">New</span> -->
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-book-reader"></i>
+                        <p>
+                            Documentos
+                            <!-- <span class="right badge badge-danger">New</span> -->
+                        </p>
+                    </a>
+                </li>
             </ul>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('procuracao.index') }}" class="nav-link">
-                <i class="nav-icon fa fa-file"></i>
-                <p>
-                    Procuração
-                    <!-- <span class="right badge badge-danger">New</span> -->
-                </p>
-            </a>
         </li>
 
         <li class="nav-item has-treeview menu">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link bg-info">
                 <i class="nav-icon fa fa-balance-scale"></i>
                 <p>
                     Contratos
@@ -53,7 +62,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('contrato.index') }}" class="nav-link active">
+                    <a href="{{ route('contrato.index') }}" class="nav-link bg-white">
                         <i class="nav-icon fa fa-save"></i>
                         <p>
                             Gerar
@@ -62,7 +71,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('historicoProcesso.index') }}" class="nav-link">
+                    <a href="{{ route('historicoProcesso.index') }}" class="nav-link bg-white">
                         <i class="nav-icon fa fa-list-alt"></i>
                         <p>
                             Histórico
@@ -73,18 +82,8 @@
             </ul>
         </li>
 
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-book-reader"></i>
-                <p>
-                    Documentos
-                    <!-- <span class="right badge badge-danger">New</span> -->
-                </p>
-            </a>
-        </li>
-
         <li class="nav-item has-treeview menu">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link bg-info">
                 <i class="nav-icon fa fa-user-circle"></i>
                 <p>
                     Financeiro
@@ -93,13 +92,19 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('contasReceber.index') }}" class="nav-link active">
+                    <a href="{{ route('contasReceber.index') }}" class="nav-link bg-white">
                         <i class="fa fa-save nav-icon"></i>
                         <p>Contas a Receber</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('receita.index') }}" class="nav-link">
+                    <a href="#" class="nav-link bg-white">
+                        <i class="fa fa-save nav-icon"></i>
+                        <p>Contas Recebidas</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('receita.index') }}" class="nav-link bg-white">
                         <i class="fa fa-pen-alt"></i>
                         <p>Receitas</p>
                     </a>
