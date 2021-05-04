@@ -35,17 +35,21 @@ class ContasRecebersController extends Controller
         $contParcelas = 0;
         $contasReceber = $this->contratoRepository->all()->where('statusContrato', 1);
 
+        $teste = 0;
+
         foreach ($contasReceber as $contas) {
 
             foreach ($contas->ContasReceber->where('statusRecebimento', 1) as $cont) {
                 $contas['valorReceber'] += $cont->valorParcela - $cont->valorRecebido;
+                $teste = $contas['valorReceber'];
             }
 
             foreach ($contas->ContasReceber->where('statusRecebimento', 0) as $cont) {
+
                 $contas['valorPago'] += $cont->valorRecebido;
 
-                //if ($cont->numeroParcela > 0)
-                    //$contParcelas = $contParcelas + 1;
+                if ($cont->numeroParcela > 0)
+                    $contParcelas = $contParcelas + 1;
             }
 
             if ($contas->numParcelaContrato == $contParcelas) {
@@ -169,6 +173,7 @@ class ContasRecebersController extends Controller
 
     public function finalizarPagamento(ContasReceberCreateRequest $request)
     {
+
         try {
 
             $contasReceber = $this->repository->update($request->all(), $request->id);
