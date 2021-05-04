@@ -17,6 +17,8 @@ class CreateReciboQuitacaoControlhesTable extends Migration
             $table->increments('id');
             $table->integer('contrato_id')->unsigned();
             $table->foreign('contrato_id')->references('id')->on('contratos');
+
+            $table->timestamps();
         });
     }
 

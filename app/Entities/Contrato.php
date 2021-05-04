@@ -56,4 +56,9 @@ class Contrato extends Model implements Transformable
         return $this->hasMany('App\Entities\HistoricoProcesso');
     }
 
+    public function ReciboQuitacaoControlhe()
+    {
+        return $this->hasOne(ReciboQuitacaoControlhe::class);
+    }
+
 }
