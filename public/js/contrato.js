@@ -14,7 +14,7 @@
 
     function PreloadingStop(){
         stopAnimation();
-        $('#modal-default').modal('hide');
+        $('#modal-default').modal('toggle');
 
     };
 
@@ -181,11 +181,9 @@
                             gerarContasReceber(data);
 
                         }else{
-                            console.log("error1");
-                            console.log(data['messages']);
-                            console.log(data);
-                            toastr.error(data['messages']);
                             PreloadingStop();
+                            toastr.error(data['messages']);
+
                             document.getElementById("btnSalvarr").disabled = false;
                         }
                     },
@@ -194,9 +192,6 @@
                         PreloadingStop();
 
                         document.getElementById("btnSalvarr").disabled = false;
-
-                        console.log("teste");
-                        console.log(data);
 
                         if(data.responseJSON.errors.objetoContrato)
                         toastr.error(data.responseJSON.errors.objetoContrato[0]);

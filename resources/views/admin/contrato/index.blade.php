@@ -122,7 +122,6 @@
 
 {!! Minify::javascript('/adminlte/plugins/datatables/jquery.dataTables.js') !!}
 {!! Minify::javascript('/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.js') !!}
-{!! Minify::javascript('/js/contrato.js') !!}
 
 <script>
         $("#example1").DataTable({

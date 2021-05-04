@@ -92,7 +92,7 @@ class ContasRecebersController extends Controller
 
             $contrato = $this->contratoRepository->find($id);
 
-            if ($contrato->valorEntradaContrato > 0 && $contrato->numParcelaContrato == 0) {
+            if ($contrato->valorEntradaContrato > 0 || $contrato->numParcelaContrato == 0) {
 
                 $contasReceberEntrada = [
                     'contrato_id'       => $contrato->id,

@@ -260,12 +260,14 @@
         </div>
 </section>
 
-<div class="modal fade"  id="modal-default">
+<div class="modal fade" data-backdrop="static" data-keyboard='false' id="modal-default">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitulo">Gerando Contrato ...</h5>
-
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -274,7 +276,6 @@
                     <div class="col-md-4"></div>
                 </div>
             </div>
-
         </div>
         <!-- /.modal-content -->
     </div>
