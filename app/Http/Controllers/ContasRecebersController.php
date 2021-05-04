@@ -165,10 +165,11 @@ class ContasRecebersController extends Controller
 
             //PEGAR NUMERO DO CONTRATO
             $numContrato = $parcela->Contrato->numContrato;
+            $cliente = $parcela->Contrato->Pessoa[0]->nomeRazaoSocial;
         };
 
 
-        return view('admin.contas_receber.parcelas', compact('parcelas', 'numContrato'));
+        return view('admin.contas_receber.parcelas', compact('parcelas', 'numContrato', 'cliente'));
     }
 
     public function finalizarPagamento(ContasReceberCreateRequest $request)

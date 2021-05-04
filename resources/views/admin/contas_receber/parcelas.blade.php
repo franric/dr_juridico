@@ -28,7 +28,7 @@
       <div class="col-12">
             <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title"><i class="fa fa-dollar-sign"></i> Parcelas do Contrato Nº {{ isset($numContrato) ?  $numContrato : "000000"}}</h3>
+                  <h3 class="card-title"><i class="fa fa-dollar-sign"></i> Parcelas do Contrato Nº {{ isset($numContrato) ?  $numContrato : "000000"}} - {{ $cliente }}</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
