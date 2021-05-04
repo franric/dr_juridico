@@ -57,24 +57,24 @@ class ContratosController extends Controller
         $request['valorExteContrato'] = ConvertNumeroTexto::valorPorExtenso($request->valorContrato, true, false);
         $request['valorExteEntContrato'] = ConvertNumeroTexto::valorPorExtenso($request->valorEntradaContrato, true, false);
 
-
         if ($request['numParcelaContrato'] > 0) {
             $valorParcela = (($request['valorContrato'] - $request['valorEntradaContrato']) / $request['numParcelaContrato']);
         }  else {
             $valorParcela = ($request['valorContrato'] - $request['valorEntradaContrato']);
         }
 
+        dd("teste01");
         $valorPagarContrato = (($valorParcela * $request['numParcelaContrato']) + $request['valorEntradaContrato']);
 
-        if($request['valorContrato'] != $valorPagarContrato){
+        if($request['valorContrato'] > $valorPagarContrato){
             $contrato['success'] = false;
-            $contrato['messages'] = 'O valor de entrada e parcelamento e diferente do valor do contrato';
+            $contrato['messages'] = 'O valor de entrada e parcelamento e menor que o valor do contrato';
+
+            dd("reste");
+            dd($contrato);
 
             return response()->json($contrato);
         }
-
-        if ($request['valorContrato'] == $request['valorEntradaContrato'])
-            $request['numParcelaContrato'] = 0;
 
         $contrato = $this->service->store($request->all());
 
