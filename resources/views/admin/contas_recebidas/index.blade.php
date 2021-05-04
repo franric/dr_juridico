@@ -58,15 +58,21 @@
                                     <td class="text-success text-right text-bold">R$ {{ number_format($recebido->valorPago, 2, ',', '.') }}</td>
 
                                     <td class="text-danger text-right text-bold">R$ {{ number_format($recebido->valorReceber, 2, ',', '.') }}</td>
-                                    <td class="text-center">{{ $recebido->numParcelaContrato }}</td>
+                                    <td class="text-center"><span class="badge bg-green">QUITADO</span></td>
 
 
                                     <td style="text-align: center">
-                                        <div style="margin-right:5px" class="btn-group">
+                                        <!-- <div style="margin-right:5px" class="btn-group">
                                             <a href="{{ route('parcela', $recebido->id) }}"
                                                data-toggle="tooltip" data-placement="top"
                                                title="Visualizar Parcelas">
                                                <i class="fas fa-dollar-sign text-primary"></i></a>
+                                        </div> -->
+                                        <div style="margin-right:5px" class="btn-group">
+                                            <a href="{{ url('imprimirReciboQuitacao', $recebido->id) }}"
+                                            data-toggle="tooltip" data-placement="top"
+                                            title="Imprimir Recibo de quitação">
+                                            <i class="fas fa-money-check-alt text-orange"></i></a>
                                         </div>
                                     </td>
                                 </tr>

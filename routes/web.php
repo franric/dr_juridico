@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('finalizarPagamento', 'ContasRecebersController@finalizarPagamento')->name('contasReceber.finalizarPagamento');
     Route::get('/imprimirRecibo/{id}', 'ContasRecebersController@imprimirRecibo');
     Route::get('contasRecebidas/', 'ContasRecebersController@contasRecebidas')->name('contasRecebidas.index');
+    Route::get('/imprimirReciboQuitacao/{id}', 'ContasRecebersController@imprimirReciboQuitacao');
 
     // ############################# Histórico Clientes #############################
     Route::resource('historico', 'HistoricosController');
