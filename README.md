@@ -16,3 +16,21 @@ ln -s ~/[APP_LARAVEL]/public ~/public_html
 Substitua [APP_LARAVEL] pelo nome da pasta onde está a sua aplicação Laravel (na raiz da hospedagem).
 
 O comando vai criar uma nova pasta "public_html", mas agora como link simbólico para a pasta "public" de sua aplicação Laravel. Caso não saiba como realizar a configuração, você pode solicitar via ticket que a equipe técnica realiza para você.
+
+
+Instalação do Projeto 
+
+1 - git clone https://github.com/franric/dr_juridico.git
+
+2 - composer require
+
+3 - composer install --optimize-autoloader --no-dev
+
+4 - php artisan config:cache
+
+5 - php artisan route:cache
+
+6 - php artisan view:cache
+
+7 - fazer backup do banco de dados " Se ouver"
+
