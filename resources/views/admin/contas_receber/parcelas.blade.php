@@ -122,13 +122,14 @@
 
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                        <label>Valor a Receber</label>
+                                        <label>Forma de Pagamento</label>
                                         <select name="tipoPagamento" class="form-control select2" id="tipoPagamento" style="width: 100%;">
                                             <option value="0">DINHEIRO</option>
                                             <option value="1">CARTÃO DÉBITO</option>
                                             <option value="2">CARTÃO CRÉDITO</option>
                                             <option value="3">DEPOSITO BANCÁRIO</option>
                                             <option value="4">TRANSFERENCIA BANCÁRIA</option>
+                                            <option value="5">PIX</option>
                                         </select>
                                     </div>
                             </div>

@@ -61,6 +61,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/gerarProcuracao/{id}', 'ProcuracaosController@WordGenerate');
     Route::get('/procuracao/excluir/{id}', 'ProcuracaosController@destroy');
 
-    // ############################# Procuração #############################
+    // ############################# Histórico Processo #############################
     Route::resource('historicoProcesso', 'HistoricoProcessosController');
+
+    // ############################# Formas de Pagamento #############################
+    Route::resource('formaPagamento', 'FormaPagamentosController');
+
 });

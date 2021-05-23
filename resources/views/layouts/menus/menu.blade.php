@@ -93,13 +93,13 @@
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('contasReceber.index') }}" class="nav-link bg-white">
-                        <i class="fa fa-save nav-icon"></i>
+                        <i class="fas fa-money-bill-wave"></i>
                         <p>Contas a Receber</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('contasRecebidas.index') }}" class="nav-link bg-white">
-                        <i class="fa fa-save nav-icon"></i>
+                        <i class="far fa-money-bill-alt"></i>
                         <p>Contas Recebidas</p>
                     </a>
                 </li>
@@ -107,6 +107,12 @@
                     <a href="{{ route('receita.index') }}" class="nav-link bg-white">
                         <i class="fa fa-pen-alt"></i>
                         <p>Receitas</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('formaPagamento.index') }}" class="nav-link bg-white">
+                        <i class="fas fa-comment-dollar"></i>
+                        <p>Formas de Pagamento</p>
                     </a>
                 </li>
             </ul>

@@ -83,7 +83,7 @@ class ReceitasController extends Controller
     }
 
     public function getReceitaSelect(){
-        
+
         $receitas = $this->service->getReceitaSelect();
         return Response()->json($receitas);
     }
