@@ -8,7 +8,8 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <!-- <h1 class="m-0 text-dark">Starter Page</h1> -->
+            @include('layouts.alerts.validationAlert')
+        <!-- <h1 class="m-0 text-dark">Starter Page</h1> -->
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -40,6 +41,7 @@
                         <th>Vencimento</th>
                         <th>Valor Recebido</th>
                         <th>Recebimento</th>
+                        <th>Forma de Pagamento</th>
                         <th>Status</th>
                         <th>Ação</th>
                     </tr>
@@ -66,8 +68,19 @@
                                         @elseif($parcela->statusRecebimento == 0)
                                             <span class="badge bg-green">PAGO</span></td>
                                         @elseif($parcela->dataVencimento >= date('Y-m-d'))
-                                            <span class="badge bg-primary">ABERTA</span></td>
+                                            <span class="badge bg-primary">AGUARDANDO PAGAMENTO</span></td>
                                         @endif
+
+                                    <td class="text-center">
+                                        @if(isset($parcela->FormaPagamento) && count($parcela->FormaPagamento) > 0)
+                                            @foreach($parcela->FormaPagamento as $fp)
+                                                <span class="badge bg-primary">{{ $fp->descricao }}</span>
+                                            @endforeach
+                                        @else
+                                            <span class="badge bg-warning">AGUARDANDO PAGAMENTO</span>
+                                        @endif
+
+                                    </td>
 
                                     <td style="text-align: center">
                                             @if($parcela->statusRecebimento == 1)
@@ -79,8 +92,7 @@
                                                 </div>
                                             @else
                                             <div style="margin-right:5px" class="btn-group">
-                                                <a data-placement="top"
-                                                <i class="fas fa-check-circle"></i></a>
+                                                <a data-placement="top" <i class="fas fa-check-circle"></i></a>
                                             </div>
                                             <div style="margin-right:5px" class="btn-group">
                                                 <a href="{{ url('imprimirRecibo', $parcela->id) }}"
@@ -111,7 +123,7 @@
             </div>
                 <div class="modal-body">
                     <div class="card-body">
-                        {!! Form::open(['id' => 'frmPagamento']) !!}
+                        {!! Form::open(['route' => 'contasReceber.finalizarPagamento', 'method' => 'post']) !!}
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label>Valor Parcela</label>
@@ -120,17 +132,11 @@
 
                             </div>
 
+
                             <div class="row">
                                 <div class="form-group col-md-12">
                                         <label>Forma de Pagamento</label>
-                                        <select name="tipoPagamento" class="form-control select2" id="tipoPagamento" style="width: 100%;">
-                                            <option value="0">DINHEIRO</option>
-                                            <option value="1">CARTÃO DÉBITO</option>
-                                            <option value="2">CARTÃO CRÉDITO</option>
-                                            <option value="3">DEPOSITO BANCÁRIO</option>
-                                            <option value="4">TRANSFERENCIA BANCÁRIA</option>
-                                            <option value="5">PIX</option>
-                                        </select>
+                                        {!! Form::select('tipoPagamento', $formaPagamento, null, ['class' => 'form-control select2', 'id' => 'tipoPagamento']) !!}
                                     </div>
                             </div>
 
@@ -151,13 +157,14 @@
 
                                 </div>
                             </div>
-                        {!! Form::close() !!}
+
 
                     </div>
                 </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Voltar</button>
-                <button type="button" onclick="pagarParcela()" class="btn btn-primary" >Pagar</button>
+                <!--<button type="button" onclick="pagarParcela()" class="btn btn-primary" >Pagar</button>-->
+                {!! Form::submit('Salvar', ['class' => 'btn flat btn-primary']) !!}
             </div>
           </div>
         </div>
@@ -197,43 +204,7 @@
 
         }
 
-        function pagarParcela(){
 
-            var dados = $('#frmPagamento').serialize();
-
-            if($('#valorRecebido').val() === '') {
-                toastr.error("O Valor a Receber e Obrigatório.");
-                return;
-            }
-
-            if($('#dataRecebimento').val() === '') {
-                toastr.error("A Data do Recebimento e Obrigatória");
-                return;
-            }
-
-            $.ajax({
-                type: "post",
-                url: "{{ route('contasReceber.finalizarPagamento') }}",
-                data: dados,
-                success: function(result){
-                    $('#modal-pagamento').modal('hide');
-
-                    if(result['success']){
-                        window.location.replace("{{ route('contasReceber.index') }}");
-                    } else {
-                        toastr.error("Error ao tentar Pagar a Parcela");
-                    }
-                },
-                error: function(data) {
-
-                    if(data.responseJSON.errors.valorRecebido)
-                        toastr.error(data.responseJSON.errors.valorRecebido[0]);
-
-                    if(data.responseJSON.errors.dataRecebimento)
-                        toastr.error(data.responseJSON.errors.dataRecebimento[0]);
-                }
-            });
-        }
 
     </script>
 

@@ -63,15 +63,11 @@ class ContratosController extends Controller
             $valorParcela = ($request['valorContrato'] - $request['valorEntradaContrato']);
         }
 
-        dd("teste01");
         $valorPagarContrato = (($valorParcela * $request['numParcelaContrato']) + $request['valorEntradaContrato']);
 
         if($request['valorContrato'] > $valorPagarContrato){
             $contrato['success'] = false;
             $contrato['messages'] = 'O valor de entrada e parcelamento e menor que o valor do contrato';
-
-            dd("reste");
-            dd($contrato);
 
             return response()->json($contrato);
         }

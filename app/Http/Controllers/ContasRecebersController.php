@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Entities\ReciboControle;
 use App\Entities\ReciboQuitacaoControlhe;
+use \App\Entities\FormaPagamento;
+use App\Entities\FormaPagamentoParcela;
 use App\Http\Requests\ContasReceberUpdateRequest;
 use App\Repositories\ContasReceberRepository;
 use App\Exceptions\ExceptionsErros;
 use App\Funcoes\ConvertNumeroTexto;
 use App\Http\Requests\ContasReceberCreateRequest;
 use App\Repositories\ContratoRepository;
+use App\Repositories\FormaPagamentoRepository;
+use App\Repositories\FormaPagamentoParcelaRepository;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Foreach_;
 
@@ -20,18 +24,24 @@ class ContasRecebersController extends Controller
     protected $contratoRepository;
     protected $reciboRepository;
     protected $reciboQuitacaoRepository;
+    protected $formaPagamento;
+    protected $formaPagamentoParcela;
 
     public function __construct(ContasReceberRepository $repository,
                                 ExceptionsErros $erros,
                                 ContratoRepository $contratoRepository,
                                 ReciboControle $reciboRepository,
-                                ReciboQuitacaoControlhe $reciboQuitacaoRepository )
+                                ReciboQuitacaoControlhe $reciboQuitacaoRepository,
+                                FormaPagamentoRepository $formaPagamento,
+                                FormaPagamentoParcelaRepository $formaPagamentoParcela )
     {
         $this->repository = $repository;
         $this->erros = $erros;
         $this->contratoRepository = $contratoRepository;
         $this->reciboRepository = $reciboRepository;
         $this->reciboQuitacaoRepository = $reciboQuitacaoRepository;
+        $this->formaPagamento = $formaPagamento;
+        $this->formaPagamentoParcela = $formaPagamentoParcela;
     }
 
     public function index()
@@ -156,6 +166,10 @@ class ContasRecebersController extends Controller
     {
         $parcelas = $this->repository->all()->where('contrato_id', $id);
 
+        //dd(count($parcelas[55]->FormaPagamento));
+
+        $formaPagamento = FormaPagamento::pluck('descricao', 'id');
+
         // Calcula a diferença em segundos entre as datas
         foreach ($parcelas as $parcela) {
 
@@ -171,15 +185,20 @@ class ContasRecebersController extends Controller
         };
 
 
-        return view('admin.contas_receber.parcelas', compact('parcelas', 'numContrato', 'cliente'));
+        return view('admin.contas_receber.parcelas', compact('parcelas', 'numContrato', 'cliente', 'formaPagamento'));
     }
 
     public function finalizarPagamento(ContasReceberCreateRequest $request)
     {
 
-        try {
+            $contasReceber = $this->repository->update($request->except('tipoPagamento'), $request->id);
 
-            $contasReceber = $this->repository->update($request->all(), $request->id);
+            $dados = [
+                'parcela_id'            => $contasReceber->id,
+                'forma_pagamento_id'    => $request->tipoPagamento
+            ];
+
+            $this->formaPagamentoParcela->create($dados);
 
             $recibo = [
                 'contas_receber_id' => $contasReceber->id
@@ -192,16 +211,8 @@ class ContasRecebersController extends Controller
                 'messages' => 'Parcela Paga Com Sucesso'
             ]);
 
-            return [
-                'success'   => true,
-                'messages'  => 'Parcela Paga Com Sucesso',
-                'contrato' => $contasReceber
-            ];
-        } catch (\Exception $e) {
-            return $this->erros->errosExceptions($e);
-        }
-
-        return response()->json($contasReceber);
+        return redirect()->back();
+        //return redirect()->route('contasReceber.index');
     }
 
     public function imprimirRecibo($id)
@@ -451,13 +462,7 @@ class ContasRecebersController extends Controller
         $textRun->addText(' no qual dou ' , 'fBody');
         $textRun->addText('Plena Quitação.', 'fBodyItalic');
 
-/*
-        if($recibo->numeroParcela == 0){
-            $textRun->addText('entrada do Contrato de Honorários Nº ' . $recibo->Contrato->numContrato, 'fBodyItalic');
-        } else {
-            $textRun->addText('Contrato de Honorários Nº ' . $recibo->Contrato->numContrato . ' - Parcela ' . $recibo->numeroParcela . '/' . $recibo->Contrato->numParcelaContrato, 'fBodyItalic');
-        }
-*/
+
         $section->addTextBreak(2);
 
         $textRun = $section->addTextRun('pRight');
@@ -485,14 +490,10 @@ class ContasRecebersController extends Controller
 
     }
 
-    public function update(ContasReceberUpdateRequest $request, $id)
-    {
-        return view();
-    }
-
-
     public function destroy($id)
     {
         return redirect()->back()->with('message', 'ContasReceber deleted.');
     }
+
+
 }

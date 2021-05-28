@@ -19,7 +19,6 @@ class ContasReceber extends Model implements Transformable
     protected $fillable = [
         'id',
         'contrato_id',
-        'tipoPagamento',
         'valorParcela',
         'valorRecebido',
         'dataVencimento',
@@ -36,6 +35,11 @@ class ContasReceber extends Model implements Transformable
     public function Recibo()
     {
         return $this->hasOne(ReciboControle::class);
+    }
+
+    public function FormaPagamento()
+    {
+        return $this->belongsToMany('App\Entities\FormaPagamento', 'forma_pagamento_parcelas', 'parcela_id', 'forma_pagamento_id');
     }
 
 }

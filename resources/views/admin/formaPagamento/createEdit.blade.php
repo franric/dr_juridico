@@ -39,7 +39,7 @@
                 <div class="card-header">
                     <h3 class="card-title"><i class="fa fa-user-circle"> </i> Alterar Forma de Pagamento</h3>
                 </div>
-                {!! Form::model($formaPagamento, ['route' => ['formaPagamento.update', $formaPagamento->id], 'method' => 'put']) !!}
+                {!! Form::model($formaPagamento, ['route' => ['formaPagamento.update', $formaPagamento->id], 'method' => 'put']) !!}.
                 {!! Form::hidden('id', $value = null) !!}
             @else
                 <div class="card-header">

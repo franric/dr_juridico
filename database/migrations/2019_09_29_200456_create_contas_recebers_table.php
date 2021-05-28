@@ -26,7 +26,9 @@ class CreateContasRecebersTable extends Migration
             $table->date('dataRecebimento')->nullable();
             $table->integer('numeroParcela');
             $table->integer('statusRecebimento');
+
             $table->timestamps();
+
 		});
 	}
 

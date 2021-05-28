@@ -17,4 +17,8 @@ class FormaPagamento extends Model implements Transformable
 
     protected $fillable = ['id', 'descricao'];
 
+    public function Parcela()
+    {
+        return $this->belongsToMany('App\Entities\ContasReceber', 'forma_pagamento_parcelas', 'parcela_id', 'forma_pagamento_id');
+    }
 }

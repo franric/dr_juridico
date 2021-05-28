@@ -26,11 +26,11 @@ class FormaPagamentosServices
     public function store($dados)
     {
          try {
-            $this->repository->create($dados);
+            $ret = $this->repository->create($dados);
 
             return [
-                'success' => true,
-                'messages' => 'Forma de Pagamento Cadastrado com Sucesso'
+                'success'   => true,
+                'messages'  => 'Forma de Pagamento Cadastrado com Sucesso',
             ];
         } catch (\Exception $e) {
             return $this->erros->errosExceptions($e);
@@ -43,8 +43,8 @@ class FormaPagamentosServices
             $this->repository->update($dados, $id);
 
             return [
-                'success'     => true,
-                'messages' => 'Forma de Pagamento Atualizado com Sucesso'
+                'success'   => true,
+                'messages'  => 'Forma de Pagamento Atualizado com Sucesso'
             ];
         } catch (\Exception $e) {
             return $this->erros->errosExceptions($e);
