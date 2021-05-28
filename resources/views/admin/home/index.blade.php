@@ -22,7 +22,40 @@
               <!-- Small boxes (Stat box) -->
 
             <div class="row">
-                <div class="col-lg-6 col-6">
+
+                <div class="col-lg-2 col-2">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                      <div class="inner">
+                        <h3>R$ {{ number_format($dashboard['recebidoAnual'], 2, ',', '.') }}</h3>
+
+                        <p>Recebido Anual</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-dollar-sign"></i>
+                      </div>
+                      <a href="#" class="small-box-footer"><i class="fas fa-check-circle"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+
+                <div class="col-lg-2 col-2">
+                    <!-- small box -->
+                    <div class="small-box bg-purple">
+                      <div class="inner">
+                        <h3>R$ {{ number_format($dashboard['aReceberMensal'], 2, ',', '.') }}</h3>
+
+                        <p>A Receber Mensal</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-dollar-sign"></i>
+                      </div>
+                      <a href="#" class="small-box-footer"><i class="fas fa-check-circle"></i></a>
+                    </div>
+                  </div>
+                  <!-- ./col -->
+
+                <div class="col-lg-2 col-2">
                   <!-- small box -->
                   <div class="small-box bg-success">
                     <div class="inner">
@@ -37,37 +70,8 @@
                   </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-6 col-6">
-                  <!-- small box -->
-                  <div class="small-box bg-purple">
-                    <div class="inner">
-                      <h3>R$ {{ number_format($dashboard['aReceberMensal'], 2, ',', '.') }}</h3>
 
-                      <p>A Receber Mensal</p>
-                    </div>
-                    <div class="icon">
-                      <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <a href="#" class="small-box-footer"><i class="fas fa-check-circle"></i></a>
-                  </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-6 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                      <div class="inner">
-                        <h3>R$ {{ number_format($dashboard['recebidoAnual'], 2, ',', '.') }}</h3>
-
-                        <p>Recebido Anual</p>
-                      </div>
-                      <div class="icon">
-                        <i class="fas fa-dollar-sign"></i>
-                      </div>
-                      <a href="#" class="small-box-footer"><i class="fas fa-check-circle"></i></a>
-                    </div>
-                </div>
-                  <!-- ./col -->
-                  <div class="col-lg-6 col-6">
+                  <div class="col-lg-2 col-2">
                     <!-- small box -->
                     <div class="small-box bg-purple">
                       <div class="inner">
@@ -82,22 +86,7 @@
                     </div>
                   </div>
 
-                <div class="col-lg-3 col-6">
-                  <!-- small box -->
-                  <div class="small-box bg-primary">
-                    <div class="inner">
-                      <h3>{{ $dashboard['contrato'] }}</h3>
-
-                      <p>Contratos Abertos</p>
-                    </div>
-                    <div class="icon">
-                      <i class="fa fa-balance-scale"></i>
-                    </div>
-                    <a class="small-box-footer"><i class="fas fa-check-circle"></i></a>
-                  </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-6 col-6">
+                  <div class="col-lg-2 col-2">
                     <!-- small box -->
                     <div class="small-box bg-danger">
                       <div class="inner">
@@ -112,21 +101,25 @@
                     </div>
                   </div>
                   <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                  <!-- small box -->
-                  <div class="small-box bg-info">
-                    <div class="inner">
-                      <h3>{{ $dashboard['cliente'] }}</h3>
 
-                      <p>Clientes</p>
+
+                <div class="col-lg-2 col-2">
+                  <!-- small box -->
+                  <div class="small-box bg-primary">
+                    <div class="inner">
+                      <h3>{{ $dashboard['contrato'] }}</h3>
+
+                      <p>Contratos Abertos</p>
                     </div>
                     <div class="icon">
-                      <i class="fa fa-users"></i>
+                      <i class="fa fa-balance-scale"></i>
                     </div>
                     <a class="small-box-footer"><i class="fas fa-check-circle"></i></a>
                   </div>
                 </div>
                 <!-- ./col -->
+
+
             </div>
             </div>
         </div>
