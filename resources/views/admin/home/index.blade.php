@@ -118,10 +118,50 @@
                   </div>
                 </div>
                 <!-- ./col -->
+            </div>
 
+            <!--  ####################### CLIENTES ATRASADOS ################################## -->
+            <div class="card">
+                <div class="card-header bg-danger">
+                  <h3 class="card-title ">CLIENTES EM ATRASO</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                  <table class="table table-sm">
+                    <thead>
+                      <tr >
+                        <th>Contrato Nº</th>
+                        <th>Clientes</th>
+                        <th>Parcelas em Atraso</th>
+                        <th style="width: 150px">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($dashboard['clientesAtraso'] as $atraso)
+                            <tr>
+                                <td>{{ $atraso[0]->Contrato->numContrato }}</td>
+                                <td>
+                                    {{ $atraso[0]->Contrato->Pessoa[0]->nomeRazaoSocial }}
+                                </td>
+                                <td>
+                                    {{ count($atraso) }}
+                                </td>
+                                <td style="text-align: right" ><span class="badge bg-danger">R$ {{ number_format(collect($atraso)->sum('valorParcela'), 2, ',', '.') }}</span></td>
+                            </tr>
+                        @endforeach
+                    <tr class="bg-primary">
+                        <td colspan="3">TOTAL DEVIDO</td>
+                        <td style="text-align: right">R$ {{ number_format($dashboard['clientesAtrasoValorTotal'], 2, ',', '.') }}  </td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
 
             </div>
-            </div>
+
         </div>
 
 @endsection

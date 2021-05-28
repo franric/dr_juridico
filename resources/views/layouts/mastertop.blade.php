@@ -189,7 +189,7 @@
       <footer class="main-footer">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
-          Anything you want
+          Desenvolvido por DR Tecnologia e Serviços
         </div>
         <!-- Default to the left -->
         <strong>Copyright &copy; 2019-2019 <a href="https://www.drconsultoriajuridica.com">DR Jurídico</a>.</strong> Todos os Direitos Reservados.

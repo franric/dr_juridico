@@ -190,29 +190,27 @@ class ContasRecebersController extends Controller
 
     public function finalizarPagamento(ContasReceberCreateRequest $request)
     {
+        $contasReceber = $this->repository->update($request->except('tipoPagamento'), $request->id);
 
-            $contasReceber = $this->repository->update($request->except('tipoPagamento'), $request->id);
+        $dados = [
+            'parcela_id'            => $contasReceber->id,
+            'forma_pagamento_id'    => $request->tipoPagamento
+        ];
 
-            $dados = [
-                'parcela_id'            => $contasReceber->id,
-                'forma_pagamento_id'    => $request->tipoPagamento
-            ];
+        $this->formaPagamentoParcela->create($dados);
 
-            $this->formaPagamentoParcela->create($dados);
+        $recibo = [
+            'contas_receber_id' => $contasReceber->id
+        ];
 
-            $recibo = [
-                'contas_receber_id' => $contasReceber->id
-            ];
+        $this->reciboRepository->create($recibo);
 
-            $this->reciboRepository->create($recibo);
-
-            session()->flash('success', [
-                'success' => true,
-                'messages' => 'Parcela Paga Com Sucesso'
-            ]);
+        session()->flash('success', [
+            'success' => true,
+            'messages' => 'Parcela Paga Com Sucesso'
+        ]);
 
         return redirect()->back();
-        //return redirect()->route('contasReceber.index');
     }
 
     public function imprimirRecibo($id)
