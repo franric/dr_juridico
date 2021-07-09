@@ -186,7 +186,7 @@
             </div>
 
             </div>
-
+          
         </div>
 
 @endsection
@@ -203,18 +203,18 @@
         datasets: [
         {
             label               : 'Recebidos',
-            backgroundColor     : 'rgba(60,141,188,0.9)',
+            backgroundColor     : 'blue',
             borderColor         : 'rgba(60,141,188,0.8)',
             pointRadius          : false,
             pointColor          : '#3b8bba',
             pointStrokeColor    : 'rgba(60,141,188,1)',
             pointHighlightFill  : '#fff',
             pointHighlightStroke: 'rgba(60,141,188,1)',
-            data                : [28, 48, 40, 19, 86, 27, 90]
+            data                : [580, 48, 40, 19, 86, 27, 90]
         },
         {
             label               : 'A Receber',
-            backgroundColor     : 'rgba(210, 214, 222, 1)',
+            backgroundColor     : 'green',
             borderColor         : 'rgba(210, 214, 222, 1)',
             pointRadius         : false,
             pointColor          : 'rgba(210, 214, 222, 1)',

@@ -5,7 +5,7 @@ namespace App\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
-
+use DB;
 /**
  * Class ContasReceber.
  *
@@ -42,4 +42,13 @@ class ContasReceber extends Model implements Transformable
         return $this->belongsToMany('App\Entities\FormaPagamento', 'forma_pagamento_parcelas', 'parcela_id', 'forma_pagamento_id');
     }
 
+    public static function Teste() {
+        $users = ContasReceber::select(DB::raw('dataVencimento, sum(valorParcela)'))
+                     ->where('statusRecebimento', 1)
+                     ->whereYear('dataVencimento', 2021)
+                     ->groupBy(DB::raw('(month(dataVencimento))'))
+                     ->get();
+
+        return $users;
+    }
 }

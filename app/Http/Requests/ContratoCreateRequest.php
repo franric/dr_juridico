@@ -17,8 +17,8 @@ class ContratoCreateRequest extends FormRequest
         return [
 
             'objetoContrato' => 'required|min:10',
-            'valorContrato'  => 'required|numeric|digits_between:0,10',
-            'valorEntradaContrato' => 'required|numeric|digits_between:0,10',
+            'valorContrato'  => 'required|numeric',
+            'valorEntradaContrato' => 'required|numeric',
             'comarcaCidadeContrato' => 'required|min:3|max:30',
             'comarcaEstadoContrato' => 'required|min:3|max:30',
             'numParcelaContrato' => 'required|numeric|digits_between:0,2',

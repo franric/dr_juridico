@@ -32,6 +32,11 @@ class HomeController extends Controller
             ]
         )->groupBy('contrato_id');
 
+        /*
+        $posts              = \App\Entities\ContasReceber::Teste();
+                
+        dd($posts);
+     */
         $dashboard = [
             'contrato'                  => $contrato,
             'recebidoMensal'            => $recebidoMensal,
@@ -40,7 +45,8 @@ class HomeController extends Controller
             'aReceberAnual'             => $aReceberAnual,
             'emAtraso'                  => $emAtraso,
             'clientesAtraso'            => $clientesAtraso,
-            'clientesAtrasoValorTotal'  => $clientesAtrasoValorTotal
+            'clientesAtrasoValorTotal'  => $clientesAtrasoValorTotal,
+            //'posts'                     => $posts
         ];
 
         return view('admin.home.index', compact('dashboard'));
