@@ -251,7 +251,7 @@ class ContratosController extends Controller
                 $textRun = $section->addTextRun('pPadrao');
                 $textRun->addText('CONTRATANTE: ' . $pessoa->nomeRazaoSocial, 'fPadraoBold');
                 $textRun->addText(
-                    ', ' . $pessoa->nacionalidade . ', ' . $pessoa->profissao . ', portador do RG '
+                    ', ' . $pessoa->nacionalidade . ', ' . $pessoa->profissao . ', ' . $pessoa->estadoCivil . ', portador do RG '
                     . 'Nº ' . $pessoa->rg . ' ' . $pessoa->orgExpedidor . '/' . $pessoa->ufOrgExpedidor . ', CPF Nº ' . ConvertNumeroTexto::formatCnpjCpf($pessoa->cpfCnpj) . ' com endereço nesta Cidade na ' . $pessoa->logradouro . ', '
                     . 'Nº ' . $pessoa->numero . ', ' . (isset($pessoa->complemento) ? $pessoa->complemento . " - " : "") . ' ' . $pessoa->bairro . ', CEP: ' . $pessoa->cep . ' e-mail: ' . $pessoa->email,
                     'fPadrao');
@@ -271,7 +271,7 @@ class ContratosController extends Controller
 
         $textRun = $section->addTextRun('pPadrao');
         $textRun->addText('CONTRATADA: Dra. DANIELLE RUFINO ALVES RICARDO', 'fPadraoBold');
-        $textRun->addText(', brasileira, casada, Advogada, inscrita regularmente na Ordem dos Advogados do Brasil, Seção/AM sob o n.º 3.643, Seção/RN sob o número n.º 1324-A com escritório profissional na Cidade de Manaus/AM à Rua Valência, nº 02, Q/64, Conj. Campos Eliseos - Planalto, CEP: 69045-560. E-mail: atendimento@drconsultoriajurídica.com; cel(92)98191-8315;');
+        $textRun->addText(', brasileira, casada, Advogada, inscrita regularmente na Ordem dos Advogados do Brasil, Seção/AM sob o n.º 3.643, Seção/RN sob o número n.º 1324-A com escritório profissional na Cidade de Manaus/AM à Rua Valência, nº 02, Q/64, Conj. Campos Eliseos - Planalto, CEP: 69045-560. E-mail: atendimento@drconsultoriajurídica.com; cel(92)98475-9875;');
 
         $section -> addTextBreak(1);
 
@@ -369,9 +369,11 @@ class ContratosController extends Controller
                 $textRun->addText('na data de');
                 $textRun->addText(date('d/m/Y', strtotime($contratos->dataVencContrato)) . ' ', 'fPadraoBold');
                 $textRun->addText('devendo ser realizado em uma das seguintes modalidades, depósito em dinheiro ou TED em Instituição Financeira ');
-                $textRun->addText('BANCO ITAÚ, AGÊNCIA 7163, CONTA 31843-4, ', 'fPadraoBold');
+                $textRun->addText('BANCO CAIXA ECONOMICA FEDERAL, AGÊNCIA 2897, CONTA 796828921-2 OP1288, ', 'fPadraoBold');
                 $textRun->addText('ou em espécie, cartão de crédito ou débito em conta no escritório da ');
-                $textRun->addText('CONTRATADA.', 'fPadraoBold');
+                $textRun->addText('CONTRATADA', 'fPadraoBold');
+                $textRun->addText(', podendo ainda ser custeado na modalidade descrita no ');
+                $textRun->addText('§1º.', 'fPadraoBold');
             }
 
             if (isset($contratos->numParcelaContrato) && $contratos->numParcelaContrato > 0 && $contratos->valorEntradaContrato > 0) {
@@ -395,9 +397,11 @@ class ContratosController extends Controller
 
                 $textRun->addText('devendo ser realizado em uma das seguintes modalidades, depósito em dinheiro ou TED '
                                     . 'em Instituição Financeira ');
-                $textRun->addText('BANCO ITAÚ, AGÊNCIA 7163, CONTA 31843-4 ', 'fPadraoBold');
+                $textRun->addText('BANCO CAIXA ECONOMICA FEDERAL, AGÊNCIA 2897, CONTA 796828921-2 OP1288, ', 'fPadraoBold');
                 $textRun->addText('ou em espécie, cartão de crédito ou débito em conta no escritório da ');
-                $textRun->addText('CONTRATADA.', 'fPadraoBold');
+                $textRun->addText('CONTRATADA', 'fPadraoBold');
+                $textRun->addText(', podendo ainda ser custeado na modalidade descrita no ');
+                $textRun->addText('§1º.', 'fPadraoBold');
             }
 
             if (isset($contratos->numParcelaContrato) && $contratos->numParcelaContrato > 0 && $contratos->valorEntradaContrato == 0) {
@@ -418,25 +422,26 @@ class ContratosController extends Controller
 
                 $textRun->addText('devendo ser realizado em uma das seguintes modalidades, depósito em dinheiro ou TED '
                                     . 'em Instituição Financeira ');
-                $textRun->addText('BANCO ITAÚ, AGÊNCIA 7163, CONTA 31843-4 ', 'fPadraoBold');
+                $textRun->addText('BANCO CAIXA ECONOMICA FEDERAL, AGÊNCIA 2897, CONTA 796828921-2 OP1288, ', 'fPadraoBold');
                 $textRun->addText('ou em espécie, cartão de crédito ou débito em conta no escritório da ');
-                $textRun->addText('CONTRATADA.', 'fPadraoBold');
+                $textRun->addText('CONTRATADA', 'fPadraoBold');
+                $textRun->addText(', podendo ainda ser custeado na modalidade descrita no ');
+                $textRun->addText('§1º.', 'fPadraoBold');
             }
 
         $textRun = $section->addTextRun('pPadraoTab');
-        $textRun->addText('§1º. EM CASO DE NÃO PAGAMENTO DA PARCELA ATÉ A DATA DO VENCIMENTO, O CONTRATANTE '
+        $textRun->addText('§1º. PIX: CHAVE: E-MAIL: DRCONSULTORIAJURIDICA.AM@GMAIL.COM.', 'fPadraoBoldSubli');
+
+        $textRun = $section->addTextRun('pPadraoTab');
+        $textRun->addText('§2º. EM CASO DE NÃO PAGAMENTO DA PARCELA ATÉ A DATA DO VENCIMENTO, O CONTRATANTE '
                             . 'PAGARÁ O VALOR DA PARCELA EM DOBRO, COMO INDENIZAÇÃO POR PERDAS E DANOS.', 'fPadraoBold');
 
         $textRun = $section->addTextRun('pPadraoTab');
-        $textRun->addText('§2º. CASO AS DATAS ACIMA ESTIPULADAS PARA PAGAMENTO NA CLÁUSULA 7ª, '
+        $textRun->addText('§3º. CASO AS DATAS ACIMA ESTIPULADAS PARA PAGAMENTO NA CLÁUSULA 7ª, '
                             . 'ocorram em finais de semana (sábado/domingo) e/ou em feriados (nacionais, estaduais, municipais) '
                             . 'o CONTRATANTE ', 'fPadraoBold');
         $textRun->addText('obriga-se a custear o valor supra na data exata discriminada, devido as inúmeras '
                             . 'possibilidades de pagamento, descritos no caput desta.');
-
-        $textRun = $section->addTextRun('pPadraoTab');
-        $textRun->addText('§3º. Nas modalidades de pagamento (débito e crédito) ainda que parcelado, '
-                            . 'o CONTRATANTE assumirá os juros da operadora do cartão.', 'fPadraoBold');
 
         $textRun = $section->addTextRun('pPadrao');
         $textRun->addText('Cláusula 8ª. ', 'fPadraoBold');
@@ -501,60 +506,79 @@ class ContratosController extends Controller
 
         $textRun = $section->addTextRun('pPadrao');
         $textRun->addText('Por estarem assim justos e contratados, firmam o presente instrumento, em duas vias de igual teor, '
-                            . 'juntamente com 2 (duas) testemunhas.');
+                            . 'dispensa testemunhas e assinaturas físicas, modalidade contratual virtual, com certificação de veracidade por ID e-mail Contratante e Contratado.');
 
         $section -> addTextBreak(1);
 
         $textRun = $section->addTextRun('pPadrao');
         $textRun->addText('Manaus/AM, '. ucfirst(utf8_encode(strftime('%A, %d de %B de %Y', strtotime($contratos->created_at)))) . '.');
 
-        $section -> addTextBreak(1);
+        $textRun = $section->addTextRun('pPadrao');
+            $section->addText(
+                '________________________________________________________________________',
+                'fTituloCenter',
+                'pTituloCenter'
+            );                
+            
+            //$textRun = $section->addTextRun('pPadrao');
+            $section->addText(
+                'ASSINADO ELETRONICAMENTE',
+                'fTituloCenter',
+                'pTituloCenter'
+            );
 
-        foreach ($contratos->Pessoa as $pessoa) {
+        $cont = count($contratos->Pessoa);
+
+        foreach ($contratos->Pessoa as $pessoa) {            
 
             if ($pessoa->tipoPessoa == 1) {
+                
+                $table = $section->addTable();
+                $table->addRow();
+                $cellAssig = $table->addCell(5000);                                
+                $textrun = $cellAssig->addTextRun(array('alignment' => 'center', 'valign' => 'center'));
+                $textrun->addText($pessoa->nomeRazaoSocial, array('bold' => true ));
+                $textrun = $cellAssig->addTextRun(array('alignment' => 'center', 'valign' => 'center'));
+                $textrun->addText('CPF Nº ' . ConvertNumeroTexto::formatCnpjCpf($pessoa->cpfCnpj), array('bold' => true ));
 
-                $textRun = $section->addTextRun('pPadrao');
-                $textRun->addText('_________________________________________');
-                $textRun = $section->addTextRun('pPadrao');
-                $textRun->addText($pessoa->nomeRazaoSocial, 'fPadraoBold');
-                $textRun = $section->addTextRun('pPadrao');
-                $textRun->addText('CPF Nº ' . ConvertNumeroTexto::formatCnpjCpf($pessoa->cpfCnpj), 'fPadraoBold');
-
-                $section -> addTextBreak(1);
+                $cellAssig = $table->addCell(5000);                                
+                $textrun = $cellAssig->addTextRun(array('alignment' => 'center', 'valign' => 'center'));
+                $textrun->addText('DANIELLE RUFINO ALVES RICARDO', array('bold' => true ));
+                $textrun = $cellAssig->addTextRun(array('alignment' => 'center', 'valign' => 'center'));
+                $textrun->addText('OAB/AM Nº 3643', array('bold' => true ));
 
             } else {
-                $textRun = $section->addTextRun('pPadrao');
-                $textRun->addText('_________________________________________');
-                $textRun = $section->addTextRun('pPadrao');
-                $textRun->addText($pessoa->nomeRazaoSocial, 'fPadraoBold');
-                $textRun = $section->addTextRun('pPadrao');
-                $textRun->addText('CNPJ Nº ' . ConvertNumeroTexto::formatCnpjCpf($pessoa->cpfCnpj), 'fPadraoBold');
+                $table = $section->addTable();
+                $table->addRow();
+                
+                $cellAssig = $table->addCell(5000);                                
+                $textrun = $cellAssig->addTextRun(array('alignment' => 'center', 'valign' => 'center'));
+                $textrun->addText($pessoa->nomeRazaoSocial, array('bold' => true ));
+                $textrun = $cellAssig->addTextRun(array('alignment' => 'center', 'valign' => 'center'));
+                $textrun->addText('CNPJ Nº ' . ConvertNumeroTexto::formatCnpjCpf($pessoa->cpfCnpj), array('bold' => true ));
 
-                $section -> addTextBreak(1);
+                $cellAssig = $table->addCell(5000);                                
+                $textrun = $cellAssig->addTextRun(array('alignment' => 'center', 'valign' => 'center'));
+                $textrun->addText('DANIELLE RUFINO ALVES RICARDO', array('bold' => true ));
+                $textrun = $cellAssig->addTextRun(array('alignment' => 'center', 'valign' => 'center'));
+                $textrun->addText('OAB/AM Nº 3643', array('bold' => true ));
             }
+
+            if ($cont > 1) {
+                $section -> addTextBreak(1);
+                $cont--;
+            }
+
         }
 
-        $textRun = $section->addTextRun('pPadrao');
-        $textRun->addText('_________________________________________');
-        $textRun = $section->addTextRun('pPadrao');
-        $textRun->addText('DANIELLE RUFINO ALVES RICARDO', 'fPadraoBold');
-        $textRun = $section->addTextRun('pPadrao');
-        $textRun->addText('OAB/AM Nº 3643', 'fPadraoBold');
+        //$textRun = $section->addTextRun('pPadrao');
+            $section->addText(
+                '________________________________________________________________________',
+                'fTituloCenter',
+                'pTituloCenter'
+            );
 
         $section -> addTextBreak(1);
-
-        $textRun = $section->addTextRun('pPadrao');
-        $textRun->addText('TESTEMUNHAS');
-
-        $textRun = $section->addTextRun('pPadrao');
-        $textRun->addText('1.__________________________________________________ CPF.________________________');
-
-        $textRun = $section->addTextRun('pPadrao');
-        $textRun->addText('2.__________________________________________________ CPF.________________________');
-
-        $section -> addTextBreak(1);
-
         $textRun = $section->addTextRun('pPadrao');
         $textRun->addText('Protegido pela Lei nº 9.610, de 19/02/1998 - Lei de Direitos Autorais.', array('bold' => true, 'size' => '8', 'italic' => true));
 

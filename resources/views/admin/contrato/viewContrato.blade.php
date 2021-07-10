@@ -85,7 +85,7 @@
                                 @foreach ($contratos->Pessoa as $pessoa)
 
                                     @if($pessoa->tipoPessoa == 1)
-                                        <p class="text-justify"> <strong> CONTRATANTE: {{ $pessoa->nomeRazaoSocial }} </strong>, {{ $pessoa->nacionalidade }}, {{ $pessoa->profissao }}, portador do RG
+                                        <p class="text-justify"> <strong> CONTRATANTE: {{ $pessoa->nomeRazaoSocial }} </strong>, {{ $pessoa->nacionalidade }}, {{ $pessoa->profissao }}, {{ $pessoa->estadoCivil }}, portador do RG
                                            Nº {{ $pessoa->rg }} {{ $pessoa->orgExpedidor }}/{{ $pessoa->ufOrgExpedidor }}, CPF Nº {{ $pessoa->cpfCnpj }} com endereço nesta Cidade na {{ $pessoa->logradouro }},
                                            Nº {{ $pessoa->numero }}, {{ isset($pessoa->complemento) ? $pessoa->complemento . " - " : "" }} {{ $pessoa->bairro }}, CEP: {{ $pessoa->cep }} e-mail: {{ $pessoa->email }};</p>
                                     @else
@@ -104,7 +104,7 @@
                                     <strong>CONTRATADA: Dra. DANIELLE RUFINO ALVES RICARDO</strong>, brasileira, casada, Advogada, inscrita
                                     regularmente na Ordem dos Advogados do Brasil, Seção/AM sob o n.º 3.643, Seção/RN sob o número n.º
                                     1324-A com escritório profissional na Cidade de Manaus/AM à Rua Valência, nº 02, Q/64, Conj. Campos
-                                    Eliseos - Planalto, CEP: 69045-560. E-mail: atendimento@drconsultoriajurídica.com; cel(92)98191-8315
+                                    Eliseos - Planalto, CEP: 69045-560. E-mail: atendimento@drconsultoriajurídica.com; cel(92)98475-8975
                                 </p>
                                 <hr>
 
@@ -193,7 +193,8 @@
                                             e as demais a cada 30 dias após a parcela vencida,
                                         @endif
                                         devendo ser realizado em uma das seguintes modalidades, depósito em dinheiro ou TED em Instituição Financeira
-                                        <strong>BANCO ITAÚ, AGÊNCIA 7163, CONTA 31843-4</strong>, ou em espécie, cartão de crédito ou débito em conta no escritório da <strong>CONTRATADA</strong>.
+                                        <strong>BANCO CAIXA ECONOMICA FEDERAL, AGÊNCIA 2897, CONTA 796828921-2 OP1288</strong>, ou em espécie, cartão de crédito ou débito no escritório da <strong>CONTRATADA</strong>, 
+                                        podendo ainda ser custeado na modalidade descrita no <strong>§1º</strong>.
                                     @endif
 
                                     @if(isset($contratos->numParcelaContrato) && $contratos->numParcelaContrato > 0 && $contratos->valorEntradaContrato == 0)
@@ -204,23 +205,24 @@
                                             e as demais a cada 30 dias após a parcela vencida,
                                         @endif
                                         devendo ser realizado em uma das seguintes modalidades, depósito em dinheiro ou TED em Instituição Financeira
-                                        <strong>BANCO ITAÚ, AGÊNCIA 7163, CONTA 31843-4</strong>, ou em espécie, cartão de crédito ou débito em conta no escritório da <strong>CONTRATADA</strong>.
+                                        <strong>BANCO CAIXA ECONOMICA FEDERAL, AGÊNCIA 2897, CONTA 796828921-2 OP1288</strong>, ou em espécie, cartão de crédito ou débito no escritório da <strong>CONTRATADA</strong>, 
+                                        podendo ainda ser custeado na modalidade descrita no <strong>§1º</strong>.
                                     @endif
                                 </p>
                                 <p>
-                                    &emsp;&emsp;&emsp;<strong>§1º. EM CASO DE NÃO PAGAMENTO DA PARCELA ATÉ A DATA DO VENCIMENTO, O CONTRATANTE
+                                    &emsp;&emsp;&emsp;<strong>§1º. PIX: CHAVE: E-MAIL: DRCONSULTORIAJURIDICA.AM@GMAIL.COM</strong>
+                                </p>
+                                <p>
+                                    &emsp;&emsp;&emsp;<strong>§2º. EM CASO DE NÃO PAGAMENTO DA PARCELA ATÉ A DATA DO VENCIMENTO, O CONTRATANTE
                                     PAGARÁ O VALOR DA PARCELA EM DOBRO, COMO INDENIZAÇÃO POR PERDAS E DANOS.</strong>
                                 </p>
                                 <p>
-                                    &emsp;&emsp;&emsp;<strong>§2º. CASO AS DATAS ACIMA ESTIPULADAS PARA PAGAMENTO NA CLÁUSULA 7ª,
+                                    &emsp;&emsp;&emsp;<strong>§3º. CASO AS DATAS ACIMA ESTIPULADAS PARA PAGAMENTO NA CLÁUSULA 7ª,
                                     ocorram em finais de semana (sábado/domingo) e/ou em feriados(nacionais/estaduais/municipais)
                                     o CONTRATANTE</strong> obriga-se a custear o valor supra na data exata discriminada, devido as inúmeras
                                     possibilidades de pagamento, descritos no caput desta.
                                 </p>
-                                <p>
-                                    &emsp;&emsp;&emsp;<strong>§3º. Nas modalidades de pagamento (débito e crédito)ainda que parcelado,
-                                    o CONTRATANTE assumirá os juros da operadora do cartão.</strong>
-                                </p>
+                                
                                 <p class="text-justify">
                                     <strong>Cláusula 8ª.</strong> Deixando motivadamente, de ter o patrocínio deste causídico, ora contratado, o valor
                                     prestado inicialmente na propositura da Ação reverter-se-á em favor do mesmo, sem prejuízos de
@@ -262,7 +264,7 @@
                                 </p>
                                 <p class="text-justify">
                                     Por estarem assim justos e contratados, firmam o presente instrumento, em duas vias de igual teor,
-                                    juntamente com 2 (duas) testemunhas.
+                                    dispensa testemunhas e assinaturas físicas, modalidade contratual virtual, com certificação de veracidade por ID e-mail Contratante e Contratado.
 
                                 </p>
                             </div>
